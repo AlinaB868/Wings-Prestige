@@ -3,6 +3,7 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 :root {
@@ -15,7 +16,9 @@
 body {
   font-family: "Inter", sans-serif;
   background-color: var(--crem);
-  height: 100vh;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 h1 {
@@ -26,86 +29,131 @@ h1 {
 
 .menu {
   display: flex;
-  justify-content: flex-end;
-  gap: 10px;
-  width: 100%;
-  padding-right: 20px;
+  justify-content: flex-start;
+  gap: 20px;
+  padding: 10px;
+  background-color: var(--blue);
 }
 
 .menu a {
   text-decoration: none;
-  color: var(--blue);
+  color: white;
 }
 
 .menu a.active {
-  color: var(--yellow);
   font-weight: 700;
 }
 
+.hero-section {
+  text-align: center;
+  padding: 50px 20px;
+  background-color: var(--blue);
+  color: white;
+}
+
+.hero-section h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.hero-section p {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+
+.hero-section .button {
+  background-color: var(--yellow);
+  padding: 12px 20px;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  display: inline-block;
+  transition: background-color 0.3s;
+}
+
+.hero-section .button:hover {
+  background-color: var(--blue);
+}
+
+.products-section {
+  padding: 50px 20px;
+  text-align: center;
+  background-color: var(--crem);
+}
+
+.products-section h2 {
+  font-size: 2rem;
+  color: var(--blue);
+  margin-bottom: 30px;
+}
+
 .products-container {
-  padding: 50px;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 30px;
 }
 
 .product-card {
   background-color: white;
   border: 2px solid var(--blue);
+  border-radius: 12px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border-radius: 12px;
-  width: 20vw;
-  padding: 5px;
-}
-
-.product-card h3 {
-  text-align: center;
-  font-weight: 600;
-  letter-spacing: 0.5px;
+  justify-content: space-between;
+  padding: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  height: 350px;
 }
 
 .product-card img {
   width: 100%;
-  height: 20vh;
+  height: 60%;
   object-fit: cover;
+  border-radius: 8px;
 }
 
 .product-info h3 {
-  margin: 10px 0;
-  font-size: 18px;
+  font-size: 1.2rem;
   color: var(--blue);
+  margin: 10px 0;
 }
 
 .price {
   color: var(--grey);
   font-weight: bold;
+  font-size: 1rem;
   text-align: center;
   margin-bottom: 10px;
 }
 
 .buttons {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   gap: 10px;
 }
 
 .buttons button {
-  border: none;
   padding: 8px 14px;
-  border-radius: 16px;
+  border-radius: 8px;
+  font-weight: bold;
   cursor: pointer;
   color: white;
+  width: 48%;
 }
 
 .details-btn {
   background-color: var(--yellow);
+  border: none;
 }
 
 .cart-btn {
   background-color: var(--blue);
+  border: none;
+}
+
+.buttons button:hover {
+  opacity: 0.8;
 }
 
 .contact-container {
@@ -117,6 +165,7 @@ h1 {
   border: 2px solid var(--blue);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
+
 .contact-form label {
   display: block;
   margin-bottom: 8px;
@@ -136,7 +185,6 @@ h1 {
   color: var(--grey);
   resize: vertical;
   transition: border-color 0.3s;
-  font-family: "Inter", sans-serif;
 }
 
 .contact-form input[type="text"]:focus,
@@ -144,10 +192,6 @@ h1 {
 .contact-form textarea:focus {
   border-color: var(--yellow);
   outline: none;
-}
-
-.contact-form textarea {
-  min-height: 120px;
 }
 
 .contact-form button {
@@ -161,12 +205,19 @@ h1 {
   font-size: 18px;
   cursor: pointer;
   transition: background-color 0.3s;
-  font-family: "Inter", sans-serif;
 }
 
 .contact-form button:hover {
   background-color: var(--yellow);
   color: var(--blue);
+}
+
+footer {
+  padding: 20px;
+  text-align: center;
+  background-color: var(--blue);
+  color: white;
+  margin-top: auto;
 }
 
 h2 {
@@ -177,21 +228,152 @@ h2 {
 }
 
 .videos-container {
-  padding: 50px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  max-width: 900px; /* Limitează lățimea conținutului și centrează */
+  margin: 0 auto;
+  padding: 50px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
 }
 
 .video-card {
   display: flex;
+  align-items: flex-start;
+  gap: 30px;
+}
+
+.video-card iframe {
+  width: 300px;
+  height: 300px; /* pătrat */
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  flex-shrink: 0;
+}
+
+.video-card p {
+  flex: 1;
+  max-width: 550px;
+  margin: 0;
+  text-align: justify;
+  line-height: 1.6;
+  color: var(--grey);
+}
+
+/* .video-card-text p {
+  text-align: justify !important;
+} */
+
+.video-description {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  margin-bottom: 30px;
+  padding: 10px;
+}
+
+.video-description p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--grey);
+  margin-bottom: 12px;
+  text-align: left;
+}
+
+@media (max-width: 768px) {
+  .video-card.media {
+    flex-direction: column;
+  }
+
+  .video-card.media iframe,
+  .video-description {
+    max-width: 100%;
+    flex: 1 1 100%;
+  }
+
+  .video-description p {
+    text-align: center;
+  }
+}
+
+.hero-video {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+}
+
+.hero-video iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.overlay-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
+  z-index: 2;
   padding: 0 20px;
 }
 
-iframe {
-  max-width: 100%;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+.about {
+  padding: 50px 20px;
+  background-color: var(--crem);
+  color: var(--blue);
+  text-align: center;
+  line-height: 1.6;
+}
+
+.about h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.about p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.about h3 {
+  font-size: 1.8rem;
+  margin-top: 30px;
+  color: var(--blue);
+}
+
+.about ul {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.about ul li {
+  font-size: 1.1rem;
+  color: var(--grey);
+  margin-bottom: 15px;
+  text-align: left;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 25px;
+  position: relative;
+}
+
+.about ul li::before {
+  content: "•";
+  color: var(--yellow);
+  position: absolute;
+  left: 0;
+  font-size: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
 }
